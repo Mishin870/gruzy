@@ -21,8 +21,8 @@ function createDiagramm(dates, minuses, pluses) {
 			maxHeightLineMinuses = maxHeightLinePluses;
 		}
 		var text = '<div class="one-day" id="'+i+'">';
-		if (!maxHeightLineMinuses) text += '<div class="gray-line" style="height:'+minuses[i]/maxHeightLineMinuses*195+'px"></div>';
-		if (!maxHeightLinePluses) text += '<div class="blue-line" style="height:'+pluses[i]/maxHeightLinePluses*100+'px"></div>';
+		if (maxHeightLineMinuses != 0) text += '<div class="gray-line" style="height:'+minuses[i]/maxHeightLineMinuses*195+'px"></div>';
+		if (maxHeightLinePluses != 0) text += '<div class="blue-line" style="height:'+pluses[i]/maxHeightLinePluses*100+'px"></div>';
 		text += '<div class="dateofoneday">'+dates[i]+'</div></div>';
 		$('.statisticstable').html($('.statisticstable').html()+text);
 	}
