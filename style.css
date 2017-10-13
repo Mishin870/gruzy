@@ -237,7 +237,7 @@ body {
 	padding-left: 4%;
 	float:left;
 	overflow-y: scroll;
-    max-height: 575px;
+    max-height: 550px;
 }
 .content table{
 	width: 100%;
@@ -382,7 +382,7 @@ body {
 }
 .printlabel{
 	margin-top: 10.5px;
-	    margin-left: -25px;
+	    margin-left: -95px;
 	margin-bottom: 28px;
 }
 .printbuttonlink{
@@ -486,6 +486,7 @@ body {
 	font-size: 14px;
 	margin-bottom: 15px;
 	margin-left: 10%;
+	cursor: pointer;
 }
 /* Left Sidebar
 -----------------------------------------------------------------------------*/
