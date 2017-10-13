@@ -29,7 +29,7 @@ class IndexController extends Core {
 					$payed = $this->request->post('payed', 'integer');
 					$note = $this->request->post('note', 'string');
 					$weight = floatval($this->request->post('weight'));
-					if (empty($name) || empty($phone) || empty($address) || empty($note) || empty($weight)) {
+					if (empty($name) || empty($phone) || empty($address) || empty($weight)) {
 						ajaxResponse(true, "Error! Please, fill all fileds!");
 					} else {
 						$pricePerWeight = $this->settings->getSetting('send_cost');

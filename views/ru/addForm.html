@@ -38,7 +38,7 @@
 		var address = $('#add_product input[name="address"]').val();
 		var payed = parseInt($('#add_product div.chradio.active').parent().find("input").attr("value"));
 		var note = $('#add_product input[name="note"]').val();
-		if (name && phone && weight && address && note) {
+		if (name && phone && weight && address) {
 			var data = {
 				'name': name,
 				'phone': phone,
