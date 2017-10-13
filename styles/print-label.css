@@ -96,3 +96,11 @@
 	top: 350px;
 	left: 74px;
 }
+.logo-print{
+	width: 127px;
+	height: 71px;
+	position: absolute;
+	top: 74px;
+	left: 462px;
+	background-image: url(../images/onlylogo.png);
+}
