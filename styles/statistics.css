@@ -1,0 +1,181 @@
+body{
+	margin:0;
+}
+.bigboss{
+	width: 100%;
+	height: 100%;
+	background-color: #000000;
+	min-height: 675px;
+	min-width: 1366px;
+	    padding-top: 230px;
+}
+.globlabel{
+	font-size: 30px;
+	color: #ffffff;
+	font-family: 'Roboto';
+	font-weight: 300;
+	position: absolute;
+	top: 74px;
+	left: 10%;
+}
+.descriptionlabel{
+	font-family: Arial;
+	color: #fff;
+	font-size: 14px;
+	position: absolute;
+	top: 118px;
+	left: 10%;
+	opacity: 0.54;
+}
+.dates{
+	margin-top: -150px;
+    margin-right: 5%;
+    width: 209px;
+    float: right;
+}
+.dates li{
+	display: inline-block;
+	color: white;
+	font-size: 14px;
+	line-height: 2.3;
+	font-family: Arial;
+	margin-right: 23px;
+	cursor: pointer;
+	opacity: 0.82;
+
+}
+.dates li:hover{
+	border-bottom: 1px solid #44a4ff;
+}
+.dates li.active{
+	border-bottom: 1px solid #44a4ff;
+}
+.textlabel{
+	font-size: 14px;
+	color: white;
+	font-family: Arial;
+}
+.textprice{
+	font-size: 35px;
+	font-family: 'Roboto';
+	font-weight: 300;
+	color: #fff;
+}
+.textlabel1{
+	position: absolute;
+	top:533px;
+	left: 10%;
+}
+.textprice{
+	position: absolute;
+	top: 579px;
+	left: 10%;
+}
+.textprice.green:after{
+	content: ''; 
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid #22a053;
+    -moz-transform: rotate(180deg); /* Для Firefox */
+    -ms-transform: rotate(180deg); /* Для IE */
+    -webkit-transform: rotate(180deg); /* Для Safari, Chrome, iOS */
+    -o-transform: rotate(180deg); /* Для Opera */
+    transform: rotate(180deg);
+    right: -25px;
+}
+.textprice.red:after{
+	content: ''; 
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid #dd5656;
+    -moz-transform: rotate(180deg); /* Для Firefox */
+    -ms-transform: rotate(180deg); /* Для IE */
+    -webkit-transform: rotate(180deg); /* Для Safari, Chrome, iOS */
+    -o-transform: rotate(180deg); /* Для Opera */
+    transform: rotate(180deg);
+    right: -25px;
+}
+.textlabel2{
+	position: absolute;
+	top: 533px;
+	left: 32%;
+}
+.textprice2{
+	position: absolute;
+	top:579px;
+	left: 32%;
+}
+.textlabel3{
+	position: absolute;
+	top: 533px;
+	left: 56%;
+}
+.textprice3{
+	top: 579px;
+	left: 56%;
+}
+.textlabel4{
+	position: absolute;
+	top: 533px;
+	left: 80%;
+}
+.textprice4{
+	top: 579px;
+	left: 80%;
+}
+.statisticstable{
+	height: 252px;
+    margin: auto;
+    text-align: center;
+}
+.one-day:first-child{
+	margin-left: 0;
+}
+.one-day{
+	height: 215px;
+	width: 15px;
+	position: relative;
+	margin-left: 25px;
+	display: inline-block;
+}
+.gray-line{
+	height: 100px;
+	width: 5px;
+	margin-right: 5px;
+	background-color: #2b2b2b;
+	position:absolute;
+	bottom:20px;
+	left: 0;
+	border-radius: 2px;
+}
+.blue-line{
+	height: 195px;
+	width: 5px;
+	background-color: #0096e0;
+	position:absolute;
+	bottom:20px;
+	right: 0;
+	border-radius: 2px;
+}
+.dateofoneday{
+	font-family: 'Roboto';
+	font-weight: 300;
+	color: #fff;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	font-size: 14px;
+	opacity: 0.54;
+}
+.close{
+	width: 25px;
+	height: 25px;
+	position: absolute;
+	top: 45px;
+	right: 5%;
+	background-image: url(../images/close.png); 
+	background-size: cover;
+	cursor: pointer;
+}

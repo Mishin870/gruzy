@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="style.css" rel="stylesheet">
+	<link href="/styles/contacts.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<?php require_once("header.html");?>
+	<div class="clearboth interlayer"></div>
+	<div class="middle">
+
+		
+
+		<aside class="left-sidebar">
+			<?php require_once("leftPanel.html");?>
+			<table class="left-menu-table">
+				<tr>
+					<td><a href="/?m=index&mode=archive">Arşiv</a></td>
+					<td></td>
+				</tr>
+			    <tr>
+			        <td class="active"><a href="/?m=contacts">Müşteriler</a></td>
+			        <td></td>
+			    </tr>
+			    <tr>
+			        <td><a href="/?m=statistics">Rapor</a></td>
+			        <td></td>
+			    </tr>
+			    <tr>
+			        <td><a href="/?m=settings">Ayarlar</a></td>
+			        <td></td>
+			    </tr>
+			</table>
+		</aside><!-- .left-sidebar -->
+		
+		<div class="container contacts">
+			<main class="content">
+				<table>
+				    <tr class="tableglavl">
+				        <td>Müşteri</td>
+				        <td>Barkod numarası</td>
+				        <td>Telefon numarası</td>
+				    </tr>
+					<?php
+						$products = $core->products->getContacts();
+						foreach ($products as $product) {
+					?>
+						<tr>
+							<td><input id="checkBox" type="checkbox" class="checkboxtable"><label></label><div class="checkghost"></div><?php echo $product->name;?></td>
+							<td><?php echo sprintf("TR-UZ-%03d", $product->id); ?></td>
+							<td><?php echo $product->phone;?></td>
+						</tr>
+					<?php
+						}
+					?>
+				</table>
+			</main><!-- .content -->
+		</div><!-- .container-->
+
+		<aside class="right-sidebar active">
+			<div class="linkadd-button opencargo"><div class="add-button">Yük ekle</div></div>
+			<div class="functionscheck">
+				<div class="choosedtwocargo"><span id="selectionCounter">2</span> alıcı seçildi</div>
+				<div id="funcArchive" class="caneditcargo">Arşive ekle</div>
+				<div id="funcDelete" class="caneditcargo">Sil</div>
+			</div>
+		</aside><!-- .right-sidebar -->
+	<?php require_once("addForm.html");?>
+	</div><!-- .middle-->
+</div><!-- .wrapper -->
+<script src="../js/main.js"></script>
+<script>
+	$("#search-track").keyup(function() {
+		var search = $(this).val().toLowerCase();
+		$(".content table tr").each(function() {
+			var id = parseInt($(this).attr("id"));
+			if (id >= 1) {
+				var childs = $(this).children("td").toArray();
+				var name = $(childs[0]).text().toLowerCase();
+				var code = $(childs[1]).text().toLowerCase();
+				var phone = $(childs[2]).text().toLowerCase();
+				if (name.search(search) != -1 ||
+					code.search(search) != -1 ||
+					phone.search(search) != -1) {
+					$(this).show();
+				} else {
+					$(this).hide();
+				}
+			}
+		});
+	});
+</script>
+</body>
+</html>

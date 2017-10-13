@@ -1,0 +1,126 @@
+body{
+	margin:0;
+	width: 100%;
+	overflow: hidden;
+	min-width: 1349px;
+}
+.sign-in{
+	width: 33%;
+	height: 100%;
+	float: left;
+}
+.sign-in img{
+	position: absolute;
+	top: 105px;
+	left: 81px;
+	width: 39px;
+}
+.sign-in-video{
+	width: 66%;
+	float: right;
+}
+.sign-welcome{
+	font-family: Arial;
+	font-size: 30px;
+	color: #000000;
+	line-height: 1.3;
+	width: 268px;
+	position: absolute;
+	top: 185px;
+	left: 81px;
+}
+.sign-in-please{
+	font-family: Arial;
+	font-size: 14px;
+	color: #232323;
+	width: 268px;
+	position: absolute;
+	top: 285px;
+	left: 81px;
+}
+#login{
+	position: absolute;
+	left: 81px;
+	top: 359px;
+	width: 260px;
+	height: 40px;
+	font-family: Arial;
+	font-size: 14px;
+	color: #aaaaaa;
+	border:1px solid #d6d6d6;
+	border-radius: 2px;
+	padding-left: 8px;
+}
+#login::-webkit-input-placeholder {color:#aaaaaa;}
+#login::-moz-placeholder          {color:#aaaaaa;}/* Firefox 19+ */
+#login:-moz-placeholder           {color:#aaaaaa;}/* Firefox 18- */
+#login:-ms-input-placeholder      {color:#aaaaaa;}
+#password{
+	position: absolute;
+	left: 81px;
+	top: 410px;
+	width: 260px;
+	height: 40px;
+	font-family: Arial;
+	font-size: 14px;
+	color: #aaaaaa;
+	border:1px solid #d6d6d6;
+	border-radius: 2px;
+	padding-left: 8px;
+}
+#password::-webkit-input-placeholder {color:#aaaaaa;}
+#password::-moz-placeholder          {color:#aaaaaa;}/* Firefox 19+ */
+#password:-moz-placeholder           {color:#aaaaaa;}/* Firefox 18- */
+#password:-ms-input-placeholder      {color:#aaaaaa;}
+#submit-log-in{
+	position: absolute;
+	left: 81px;
+	top: 461px;
+	width: 270px;
+	height: 40px;
+	font-family: Arial;
+	font-size: 14px;
+	background-color: #0070e0;
+	color: #fff;
+	border-radius: 3px;
+	text-align: center;
+	line-height: 40px;
+	border:0;
+	cursor: pointer;
+}
+.forgotpass{
+	position: absolute;
+	top: 519px;
+	left: 162px;
+	font-size: 13px;
+	color: #7a7a7a;
+	font-family: Arial;
+	text-decoration: none;
+}
+.logostics{
+	position: absolute;
+	top: 631px;
+	left: 81px;
+	font-size: 13px;
+	font-family: Arial;
+	text-decoration: none;
+	color: #7a7a7a;
+}
+.logostics2{
+	position: absolute;
+	top: 631px;
+	left: 211px;
+	font-size: 13px;
+	font-family: Arial;
+	text-decoration: none;
+	color: #7a7a7a;
+}
+.logostics3{
+	position: absolute;
+	top: 631px;
+	left: 301px;
+	font-size: 13px;
+	font-family: Arial;
+	text-decoration: none;
+	color: #7a7a7a;
+}

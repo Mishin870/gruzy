@@ -1,0 +1,40 @@
+<?php
+	global $moduleName;
+	global $core;
+	if (isset($_GET['mode'])) {
+		$mode = $core->request->get('mode', 'string');
+	} else {
+		$mode = 'normal';
+	}
+	$products = $core->products;
+?>
+<table class="left-menu-table">
+	<tr>
+		<td<?php if ($moduleName === 'index' && $mode == 'normal') echo ' class="active"';?>><a href="/?m=index">Tüm</a></td>
+		<td><a href="#"><?php echo $products->count(array('active'=>1));?></a></td>
+	</tr>
+</table>
+<table class="left-menu-table">
+	<tr>
+		<td<?php if ($mode === 'state0') echo ' class="active"';?>><a href="/?m=index&mode=state0">Ofis, Istanbul</a></td>
+		<td><a href="#"><?php echo $products->count(array('active'=>1, 'state'=>0));?></a></td>
+	</tr>
+	<tr>
+		<td<?php if ($mode === 'state1') echo ' class="active"';?>><a href="/?m=index&mode=state1">Taşkent</a></td>
+		<td><a href="#"><?php echo $products->count(array('active'=>1, 'state'=>1));?></a></td>
+	</tr>
+	<tr>
+		<td<?php if ($mode === 'state2') echo ' class="active"';?>><a href="/?m=index&mode=state2">Teslim edildi</a></td>
+		<td><a href="#"><?php echo $products->count(array('active'=>1, 'state'=>2));?></a></td>
+	</tr>
+</table>
+<table class="left-menu-table">
+	<tr>
+		<td<?php if ($mode === 'payed') echo ' class="active"';?>><a href="/?m=index&mode=payed">Ödenmiş</a></td>
+		<td><a href="#"><?php echo $products->count(array('active'=>1, 'payed'=>1));?></a></td>
+	</tr>
+	<tr>
+		<td<?php if ($mode === 'npayed') echo ' class="active"';?>><a href="/?m=index&mode=npayed">Borçlar</a></td>
+		<td><a href="#"><?php echo $products->count(array('active'=>1, 'payed'=>0));?></a></td>
+	</tr>
+</table>
