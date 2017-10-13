@@ -1,3 +1,4 @@
 test file!
 new line
 another new line
+2
