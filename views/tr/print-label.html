@@ -19,7 +19,8 @@
 	$product = $core->products->getProduct($id);
 	$from_days = $core->settings->getSetting('self_cost_from');
 	$to_days = $core->settings->getSetting('self_cost_to');
-	$date = strftime("%d %h", strtotime($product->date) + 86400 * $to_days);
+	global $langCode;
+	$date = $core->locdate->getLocalizedShortDate($langCode, strtotime($product->date) + 86400 * $to_days);
 ?>
 <div class="label">
 	<div class="track-number"><?php echo sprintf("TR-UZ-%03d", $product->id); ?></div>
