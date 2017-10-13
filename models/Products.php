@@ -105,30 +105,52 @@ class Products extends Core {
 		$this->db->query($query);
 	}
 
-	public function getMonthProducts() {
-		$query = $this->db->placehold("SELECT DISTINCT DAY(p.date) as day, price, payed, weight FROM products p WHERE
+	public function getMonthProducts($prev = false) {
+		if ($prev) {
+			$query = $this->db->placehold("SELECT DISTINCT DAY(p.date) as day, price, payed, weight FROM products p WHERE
+										MONTH(p.date) = MONTH(CURRENT_DATE() - INTERVAL 1 MONTH)
+										AND YEAR(p.date) = YEAR(CURRENT_DATE() - INTERVAL 1 MONTH)
+									");
+		} else {
+			$query = $this->db->placehold("SELECT DISTINCT DAY(p.date) as day, price, payed, weight FROM products p WHERE
 										MONTH(p.date) = MONTH(CURRENT_DATE())
 										AND YEAR(p.date) = YEAR(CURRENT_DATE())
 									");
+		}
 		$this->db->query($query);
 		return $this->db->results();
 	}
 
-	public function getWeekProducts() {
-		$query = $this->db->placehold("SELECT DISTINCT WEEKDAY(p.date) as day, price, payed, weight FROM products p WHERE
+	public function getWeekProducts($prev = false) {
+		if ($prev) {
+			$query = $this->db->placehold("SELECT DISTINCT WEEKDAY(p.date) as day, price, payed, weight FROM products p WHERE
+										YEARWEEK(p.date, 1) = YEARWEEK(CURDATE() - INTERVAL 7 DAY, 1)
+										AND YEAR(p.date) = YEAR(CURRENT_DATE() - INTERVAL 7 DAY)
+									");
+		} else {
+			$query = $this->db->placehold("SELECT DISTINCT WEEKDAY(p.date) as day, price, payed, weight FROM products p WHERE
 										YEARWEEK(p.date, 1) = YEARWEEK(CURDATE(), 1)
 										AND YEAR(p.date) = YEAR(CURRENT_DATE())
 									");
+		}
 		$this->db->query($query);
 		return $this->db->results();
 	}
 
-	public function getDayProducts() {
-		$query = $this->db->placehold("SELECT DISTINCT HOUR(p.date) as hour, price, payed, weight FROM products p WHERE
+	public function getDayProducts($prev = false) {
+		if ($prev) {
+			$query = $this->db->placehold("SELECT DISTINCT HOUR(p.date) as hour, price, payed, weight FROM products p WHERE
+										MONTH(p.date) = MONTH(CURDATE() - INTERVAL 1 DAY)
+										AND DAY(p.date) = DAY(CURDATE() - INTERVAL 1 DAY)
+										AND YEAR(p.date) = YEAR(CURRENT_DATE() - INTERVAL 1 DAY)
+									");
+		} else {
+			$query = $this->db->placehold("SELECT DISTINCT HOUR(p.date) as hour, price, payed, weight FROM products p WHERE
 										MONTH(p.date) = MONTH(CURDATE())
 										AND DAY(p.date) = DAY(CURDATE())
 										AND YEAR(p.date) = YEAR(CURRENT_DATE())
 									");
+		}
 		$this->db->query($query);
 		return $this->db->results();
 	}
