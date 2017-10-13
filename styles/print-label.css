@@ -103,3 +103,11 @@
 	top: 74px;
 	left: 436px;
 }
+.glob-image img{
+	width: 39px;
+}
+.glob-image{
+	position: absolute;
+	top: 254px;
+	left: 292px;
+}
