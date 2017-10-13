@@ -1,0 +1,53 @@
+<script src='../js/back.js'></script>
+<script>
+	function logout() {
+		ajaxToCore('login', 'logout', {}, function(data) {
+			var json = JSON.parse(data);
+			if (json.err == '1') {
+				alert('Ошибка!');
+			} else {
+				redirectToModule('login');
+			}
+		});
+	}
+	function setLang(langCode) {
+		ajaxToCore('common', 'setlang', {'lang': langCode}, function(data) {
+			var json = JSON.parse(data);
+			if (json.err == '1') {
+				alert('Ошибка!');
+			} else {
+				window.location.reload();
+			}
+		});
+	}
+</script>
+<?php
+	global $core;
+	$admin = $core->admins->getAdmin(intval($_SESSION['user_id']));
+?>
+<header class="header">
+	<div class="header-logo">
+		<img src="../images/logo.jpg">
+	</div>
+	<div class="header-search">
+		<input type="text" name="search-track" id="search-track" placeholder="Barkod, isim ve telefon ile arama yapın">
+	</div>
+	<div class="header-avatar">
+		<div class="border-avatar">
+			<img src="<?php echo $admin->image;?>">
+		</div>
+	</div>
+	<div class="user-menu">
+		<div class="border-avatar border-avatar2">
+			<img src="<?php echo $admin->image;?>">
+		</div>
+		<div class="clearboth"></div>
+		<div class="user-name"><?php echo $admin->name;?></div>
+		<div class="position">Genel müdür</div>
+		<div class="lang"><a class="ln_link" href="#"><div class="rus_ln" onclick="setLang('ru')">На русском</div></a><a class="ln_link" href="#"><div class="turk_ln" onclick="setLang('tr')">Türkçe</div></a></div>
+		<ul class="user-menustat user-menustat2">
+			<a href="javascript:void(0)" onclick="logout()"><li>Çıkış yap</li></a>
+		</ul>
+	</div>
+	<div class="clearboth"></div>
+</header><!-- .header-->

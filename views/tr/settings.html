@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="style.css" rel="stylesheet">
+	<link href="/styles/contacts.css" rel="stylesheet">
+	<link href="/styles/settings.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+
+<div class="wrapper">
+	
+	<?php require_once("header.html");?>
+	<div class="clearboth interlayer"></div>
+	<div class="middle">
+
+		
+
+		<aside class="left-sidebar">
+			<?php require_once("leftPanel.html");?>
+			<table class="left-menu-table">
+				<tr>
+					<td><a href="/?m=index&mode=archive">Arşiv</a></td>
+					<td></td>
+				</tr>
+			    <tr>
+			        <td><a href="/?m=contacts">Müşteriler</a></td>
+			        <td></td>
+			    </tr>
+			    <tr>
+			        <td><a href="/?m=statistics">Rapor</a></td>
+			        <td></td>
+			    </tr>
+			    <tr>
+			        <td class="active"><a href="/?m=settings">Ayarlar</a></td>
+			        <td></td>
+			    </tr>
+			</table>
+		</aside><!-- .left-sidebar -->
+		
+		<div class="container contacts">
+			<main class="content">
+				<form method="post">
+					<?php
+						global $core;
+						$settings = $core->settings;
+					?>
+					<div class="pricesend"><span>Gönderme fiyatı</span><input id="NEtrogaimoiID_pricesend" type="text" name="send_cost" value="<?php echo $settings->getSetting('send_cost');?>"><span>$/kilo</span></div>
+					<div class="pricesend"><span>Maliyet fiyatı</span><input class="style1" id="NEtrogaimoiID_pricesend" type="text"
+name="self_cost" value="<?php echo $settings->getSetting('self_cost');?>"><span>$/kilo</span></div>
+<div class="pricesend"><span>Maliyet fiyatı</span><input class="style2" id="NEtrogaimoiID_pricesend" type="text"
+name="self_cost_from" value="<?php echo $settings->getSetting('self_cost_from');?>"><span>—</span><input class="style2" id="NEtrogaimoiID_pricesend" type="text"
+name="self_cost_to" value="<?php echo $settings->getSetting('self_cost_to');?>"><span>Дня</span></div>
+					<input type="submit" name="save" id="forBLake_pleaseDontDelete"   value="Kayıt et">
+				</form>				
+			</main><!-- .content -->
+		</div><!-- .container-->
+
+		
+	</div><!-- .middle-->
+</div><!-- .wrapper -->
+<script src="../js/main.js"></script>
+</body>
+</html>

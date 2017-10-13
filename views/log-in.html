@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script><![endif]-->
+	<title></title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link href="/styles/sign-in.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</head>
+
+<body>
+<div class="sign-in">
+	<div class="sign-inwindow">
+		<img src="../images/logo.jpg">
+		<div class="sign-welcome">Добро пожаловать на борт</div>
+		<div class="sign-in-please">Войдите в самую совершенную систему управления грузоперевозками.</div>
+		<input id="login" type="text" placeholder="Логин">
+		<input id="password" type="password" placeholder="Пароль">
+		<button id="submit-log-in" onclick="tryLogin()">Войти</button>
+		<a href="#" class="forgotpass">Забыли пароль?</a>
+		<a href="#" class="logostics">Uz Global Lojistik</a>
+		<a href="#" class="logostics2">Компания</a>
+		<a href="#" class="logostics3">Сайт компании</a>
+	</div>
+</div>
+<div class="sign-in-video">
+	<video id="video" width="auto" height="100%" autoplay="autoplay" loop="loop" preload="auto" muted>
+		<source src="/video/background-log-in.mp4"></source>
+	</video>
+</div>
+<script src="../js/main.js"></script>
+<script src="../js/back.js"></script>
+<script>
+	function tryLogin() {
+		var login = $('#login').val();
+		var pass = $('#password').val();
+		if (login && pass) {
+			ajaxToCore('login', 'login', {'login': login, 'pass': pass}, function(data) {
+				var json = JSON.parse(data);
+				if (json.err == '1') {
+					alert('Ошибка! ' + json.msg)
+				} else {
+					redirectToModule('index');
+				}
+			});
+		} else {
+			alert('Пожалуйста, заполните все поля!')
+		}
+	}
+</script>
+</body>
+</html>
