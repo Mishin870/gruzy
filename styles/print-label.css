@@ -104,10 +104,10 @@
 	left: 436px;
 }
 .glob-image img{
-	
+	    width: 41px;
 }
 .glob-image{
 	position: absolute;
-	top: 25px;
-    left: -38px;
+	    top: 33px;
+    left: 12px;
 }
