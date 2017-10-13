@@ -9,7 +9,7 @@ class LocDate extends Core {
 	public function __construct() {
 		$this->months = array(
 			'ru' => array('Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'),
-			'tr' => array('Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq')
+			'tr' => array('ocak', 'şubat', 'mart', 'nisan', 'mayıs', 'haziran', 'temmuz', 'ağustos', 'eylül', 'ekim', 'kasım', 'aralık')
 		);
 	}
 	
