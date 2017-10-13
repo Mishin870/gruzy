@@ -291,7 +291,7 @@ ajaxToCore('common', 'full_stat', {}, function(data) {
 			if (json.err == '1') {
 				alert('Ошибка! ' + json.msg);
 			} else {
-				//alert('Успешно!');
+				alert(json.msg);
 				window.location.reload();
 			}
 		});

@@ -16,9 +16,9 @@ class IndexController extends Core {
 					$newState = $this->request->post('state', 'integer');
 					if ($newState > $state) {
 						$this->products->setState($id, $newState);
-						ajaxResponse(false, 'State changed!');
+						ajaxResponse(false, 'Состояние груза изменено!');
 					} else {
-						ajaxResponse(true, 'Incorrect state! Next state must be greater!');
+						ajaxResponse(true, 'Неверное состояние! Новое состояние груза должно быть больше предыдущего!');
 					}
 					break;
 				}

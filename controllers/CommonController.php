@@ -39,7 +39,7 @@ class CommonController extends Core {
 					foreach ($ids as $id) {
 						$state = $this->products->getState(intval($id));
 						if ($newState <= $state) {
-							ajaxResponse(true, "Incorrect state! Next state must be greater!");
+							ajaxResponse(true, "Неверное состояние груза! Новое состояние должно быть больше предыдущего!");
 						}
 					}
 					$to_days = $this->settings->getSetting('self_cost_to');
@@ -49,7 +49,7 @@ class CommonController extends Core {
 						$date = date("d h", strtotime($product->date) + 86400 * $to_days);
 						send_sms($product->phone, "Груз ".sprintf("TR-UZ-%03d", $product->id)." принят к перевозке, Дата прибытия ".$date.". К оплате $".$product->price);
 					}
-					ajaxResponse(false, "State changed!");
+					ajaxResponse(false, "Состояние изменено!");
 					break;
 				}
 				case 'month_stat': {
