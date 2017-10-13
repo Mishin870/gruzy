@@ -41,6 +41,15 @@ function clearActive() {
 		$(this).removeClass("active");
 	});
 }
+function setRG(obj, green) {
+	if (green) {
+		obj.removeClass("red");
+		obj.addClass("green");
+	} else {
+		obj.removeClass("green");
+		obj.addClass("red");
+	}
+}
 function month() {
 	clearActive();
 	$("li.month").addClass("active");
@@ -56,15 +65,15 @@ function month() {
 				dates[i] = i.toString();
 			}
 			var sub = JSON.parse(json.msg);
-			var allp = parseInt(sub.allp);
-			var allnp = parseInt(sub.allnp);
+			var allp = parseInt(sub.allp), pallp = parseInt(sub.pallp);
+			var allnp = parseInt(sub.allnp), pallnp = parseInt(sub.pallnp);
 			var selfCost = parseInt(sub.selfCost);
-			var wp = parseInt(sub.wp);
-			var wnp = parseInt(sub.wnp);
-			$(".textprice3").html("$" + allnp);
-			$(".textprice4").html("$" + allp);
-			$(".textprice2").html("$" + (allp + allnp));
-			$(".textprice1").html("$" + (allp + allnp - selfCost * (wp + wnp)));
+			var wp = parseInt(sub.wp), pwp = parseInt(sub.pwp);
+			var wnp = parseInt(sub.wnp), pwnp = parseInt(sub.pwnp);
+			$(".textprice3").html("$" + allnp); setRG($(".textprice3"), allnp >= pallnp);
+			$(".textprice4").html("$" + allp); setRG($(".textprice4"), allp >= pallp);
+			$(".textprice2").html("$" + (allp + allnp)); setRG($(".textprice2"), (allp + allnp) >= (pallp + pallnp));
+			$(".textprice1").html("$" + (allp + allnp - selfCost * (wp + wnp))); setRG($(".textprice1"), (allp + allnp - selfCost * (wp + wnp)) >= (pallp + pallnp - selfCost * (pwp + pwnp)));
 			for (var day in sub.npayed) {
 				var n = parseInt(day);
 				minuses[n] = sub.npayed[day];
@@ -92,15 +101,15 @@ function week() {
 				dates[i] = i.toString();
 			}
 			var sub = JSON.parse(json.msg);
-			var allp = parseInt(sub.allp);
-			var allnp = parseInt(sub.allnp);
+			var allp = parseInt(sub.allp), pallp = parseInt(sub.pallp);
+			var allnp = parseInt(sub.allnp), pallnp = parseInt(sub.pallnp);
 			var selfCost = parseInt(sub.selfCost);
-			var wp = parseInt(sub.wp);
-			var wnp = parseInt(sub.wnp);
-			$(".textprice3").html("$" + allnp);
-			$(".textprice4").html("$" + allp);
-			$(".textprice2").html("$" + (allp + allnp));
-			$(".textprice1").html("$" + (allp + allnp - selfCost * (wp + wnp)));
+			var wp = parseInt(sub.wp), pwp = parseInt(sub.pwp);
+			var wnp = parseInt(sub.wnp), pwnp = parseInt(sub.pwnp);
+			$(".textprice3").html("$" + allnp); setRG($(".textprice3"), allnp >= pallnp);
+			$(".textprice4").html("$" + allp); setRG($(".textprice4"), allp >= pallp);
+			$(".textprice2").html("$" + (allp + allnp)); setRG($(".textprice2"), (allp + allnp) >= (pallp + pallnp));
+			$(".textprice1").html("$" + (allp + allnp - selfCost * (wp + wnp))); setRG($(".textprice1"), (allp + allnp - selfCost * (wp + wnp)) >= (pallp + pallnp - selfCost * (pwp + pwnp)));
 			for (var day in sub.npayed) {
 				var n = parseInt(day);
 				minuses[n] = sub.npayed[day];
@@ -128,15 +137,15 @@ function day() {
 				dates[i] = i.toString() + "h";
 			}
 			var sub = JSON.parse(json.msg);
-			var allp = parseInt(sub.allp);
-			var allnp = parseInt(sub.allnp);
+			var allp = parseInt(sub.allp), pallp = parseInt(sub.pallp);
+			var allnp = parseInt(sub.allnp), pallnp = parseInt(sub.pallnp);
 			var selfCost = parseInt(sub.selfCost);
-			var wp = parseInt(sub.wp);
-			var wnp = parseInt(sub.wnp);
-			$(".textprice3").html("$" + allnp);
-			$(".textprice4").html("$" + allp);
-			$(".textprice2").html("$" + (allp + allnp));
-			$(".textprice1").html("$" + (allp + allnp - selfCost * (wp + wnp)));
+			var wp = parseInt(sub.wp), pwp = parseInt(sub.pwp);
+			var wnp = parseInt(sub.wnp), pwnp = parseInt(sub.pwnp);
+			$(".textprice3").html("$" + allnp); setRG($(".textprice3"), allnp >= pallnp);
+			$(".textprice4").html("$" + allp); setRG($(".textprice4"), allp >= pallp);
+			$(".textprice2").html("$" + (allp + allnp)); setRG($(".textprice2"), (allp + allnp) >= (pallp + pallnp));
+			$(".textprice1").html("$" + (allp + allnp - selfCost * (wp + wnp))); setRG($(".textprice1"), (allp + allnp - selfCost * (wp + wnp)) >= (pallp + pallnp - selfCost * (pwp + pwnp)));
 			for (var day in sub.npayed) {
 				var n = parseInt(day);
 				minuses[n] = sub.npayed[day];

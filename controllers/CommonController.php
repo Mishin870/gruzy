@@ -54,12 +54,22 @@ class CommonController extends Core {
 				}
 				case 'month_stat': {
 					$products = $this->products->getMonthProducts();
+					$prevProducts = $this->products->getMonthProducts(true);
 					$pdays = array();
 					$npdays = array();
-					$allp = 0;
-					$allnp = 0;
-					$wp = 0;
-					$wnp = 0;
+					$allp = 0; $pallp = 0;
+					$allnp = 0; $pallnp = 0;
+					$wp = 0; $pwp = 0;
+					$wnp = 0; $pwnp = 0;
+					foreach ($prevProducts as $product) {
+						if ($product->payed == 1) {
+							$pallp += $product->price;
+							$pwp += $product->weight;
+						} else {
+							$pallnp += $product->price;
+							$pwnp += $product->weight;
+						}
+					}
 					foreach ($products as $product) {
 						$day = intval($product->day);
 						if ($product->payed == 1) {
@@ -81,18 +91,28 @@ class CommonController extends Core {
 						}
 					}
 					$selfCost = $this->settings->getSetting("self_cost");
-					$ret = array('payed'=>$pdays, 'npayed'=>$npdays, 'allp'=>$allp, 'allnp'=>$allnp, 'wp'=>$wp, 'wnp'=>$wnp, 'selfCost'=>$selfCost);
+					$ret = array('payed'=>$pdays, 'npayed'=>$npdays, 'allp'=>$allp, 'allnp'=>$allnp, 'wp'=>$wp, 'wnp'=>$wnp, 'selfCost'=>$selfCost, 'pallp'=>$pallp, 'pallnp'=>$pallnp, 'pwp'=>$pwp, 'pwnp'=>$pwnp);
 					ajaxResponse(false, json_encode($ret));
 					break;
 				}
 				case 'week_stat': {
 					$products = $this->products->getWeekProducts();
+					$prevProducts = $this->products->getMonthProducts(true);
 					$pdays = array();
 					$npdays = array();
-					$allp = 0;
-					$allnp = 0;
-					$wp = 0;
-					$wnp = 0;
+					$allp = 0; $pallp = 0;
+					$allnp = 0; $pallnp = 0;
+					$wp = 0; $pwp = 0;
+					$wnp = 0; $pwnp = 0;
+					foreach ($prevProducts as $product) {
+						if ($product->payed == 1) {
+							$pallp += $product->price;
+							$pwp += $product->weight;
+						} else {
+							$pallnp += $product->price;
+							$pwnp += $product->weight;
+						}
+					}
 					foreach ($products as $product) {
 						$day = intval($product->day);
 						if ($product->payed == 1) {
@@ -114,18 +134,28 @@ class CommonController extends Core {
 						}
 					}
 					$selfCost = $this->settings->getSetting("self_cost");
-					$ret = array('payed'=>$pdays, 'npayed'=>$npdays, 'allp'=>$allp, 'allnp'=>$allnp, 'wp'=>$wp, 'wnp'=>$wnp, 'selfCost'=>$selfCost);
+					$ret = array('payed'=>$pdays, 'npayed'=>$npdays, 'allp'=>$allp, 'allnp'=>$allnp, 'wp'=>$wp, 'wnp'=>$wnp, 'selfCost'=>$selfCost, 'pallp'=>$pallp, 'pallnp'=>$pallnp, 'pwp'=>$pwp, 'pwnp'=>$pwnp);
 					ajaxResponse(false, json_encode($ret));
 					break;
 				}
 				case 'day_stat': {
 					$products = $this->products->getDayProducts();
+					$prevProducts = $this->products->getMonthProducts(true);
 					$phours = array();
 					$nphours = array();
-					$allp = 0;
-					$allnp = 0;
-					$wp = 0;
-					$wnp = 0;
+					$allp = 0; $pallp = 0;
+					$allnp = 0; $pallnp = 0;
+					$wp = 0; $pwp = 0;
+					$wnp = 0; $pwnp = 0;
+					foreach ($prevProducts as $product) {
+						if ($product->payed == 1) {
+							$pallp += $product->price;
+							$pwp += $product->weight;
+						} else {
+							$pallnp += $product->price;
+							$pwnp += $product->weight;
+						}
+					}
 					foreach ($products as $product) {
 						$hour = intval($product->hour);
 						if ($product->payed == 1) {
@@ -147,7 +177,7 @@ class CommonController extends Core {
 						}
 					}
 					$selfCost = $this->settings->getSetting("self_cost");
-					$ret = array('payed'=>$phours, 'npayed'=>$nphours, 'allp'=>$allp, 'allnp'=>$allnp, 'wp'=>$wp, 'wnp'=>$wnp, 'selfCost'=>$selfCost);
+					$ret = array('payed'=>$phours, 'npayed'=>$nphours, 'allp'=>$allp, 'allnp'=>$allnp, 'wp'=>$wp, 'wnp'=>$wnp, 'selfCost'=>$selfCost, 'pallp'=>$pallp, 'pallnp'=>$pallnp, 'pwp'=>$pwp, 'pwnp'=>$pwnp);
 					ajaxResponse(false, json_encode($ret));
 					break;
 				}
