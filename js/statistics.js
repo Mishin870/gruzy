@@ -13,18 +13,18 @@ function createDiagramm(dates, minuses, pluses) {
 		if (maxHeightLinePluses<pluses[i]) {maxHeightLinePluses=pluses[i];}
 		console.log(maxHeightLineMinuses+', '+maxHeightLinePluses);
 	}
-	var text = '<div class="one-day" id="'+i+'">';
+	
 	for (var i = 0; i < lengthmass; i++) {
 		if (maxHeightLinePluses > maxHeightLineMinuses) {
 			maxHeightLinePluses = maxHeightLineMinuses;
 		} else {
 			maxHeightLineMinuses = maxHeightLinePluses;
 		}
-		
+		var text = '<div class="one-day" id="'+i+'">';
 		if (!maxHeightLineMinuses) text += '<div class="gray-line" style="height:'+minuses[i]/maxHeightLineMinuses*195+'px"></div>';
 		if (!maxHeightLinePluses) text += '<div class="blue-line" style="height:'+pluses[i]/maxHeightLinePluses*100+'px"></div>';
 		text += '<div class="dateofoneday">'+dates[i]+'</div></div>';
-		$('.statisticstable').html(text);
+		$('.statisticstable').html($('.statisticstable').html()+text);
 	}
 }
 $(".month").click(function(){
