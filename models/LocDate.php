@@ -8,8 +8,8 @@ class LocDate extends Core {
 	
 	public function __construct() {
 		$this->months = array(
-			'ru' => array('янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'),
-			'tr' => array('qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq', 'qqq')
+			'ru' => array('Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'),
+			'tr' => array('Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq', 'Qqq')
 		);
 	}
 	
@@ -20,8 +20,6 @@ class LocDate extends Core {
 		$date = getdate($date_int);
 		$month = $date['mon'];
 		$day = $date['mday'];
-		var_dump($lang);
-		var_dump($this->months);
 		return $day . ' ' . $this->months[$lang][intval($month)];
 	}
 
