@@ -103,7 +103,9 @@
 							</tr>
 							<tr>
 								<?php
-									$date = strftime("%d %h", strtotime($product->date));
+									global $core;
+									global $langCode;
+									$date = $core->locdate->getLocalizedShortDate($langCode, strtotime($product->date));
 								?>
 								<td colspan="5">
 									<div class="leftinfoblock">
@@ -289,7 +291,7 @@ ajaxToCore('common', 'full_stat', {}, function(data) {
 			if (json.err == '1') {
 				alert('Ошибка! ' + json.msg);
 			} else {
-				//alert('Успешно!');
+				alert(json.msg);
 				window.location.reload();
 			}
 		});

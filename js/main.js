@@ -116,6 +116,7 @@ function stateSel(state) {
 		if (json.err == '1') {
 			alert('Ошибка! ' + json.msg);
 		} else {
+			alert(json.msg);
 			window.location.reload();
 		}
 	});
