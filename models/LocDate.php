@@ -20,7 +20,9 @@ class LocDate extends Core {
 		$date = getdate($date_int);
 		$month = $date['mon'];
 		$day = $date['mday'];
-		return $day . ' ' . $months[$lang][intval($month)];
+		var_dump($lang);
+		var_dump($this->months);
+		return $day . ' ' . $this->months[$lang][intval($month)];
 	}
 
 }
