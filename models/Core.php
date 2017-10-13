@@ -14,7 +14,8 @@ class Core {
 		'products'	=> 'Products',
 		'db'		=> 'Database',
 		'cfg'		=> 'Cfg',
-		'settings'  => 'Settings'
+		'settings'  => 'Settings',
+		'locdate'	=> 'LocDate'
 	);
 	
 	public function __construct() {}
