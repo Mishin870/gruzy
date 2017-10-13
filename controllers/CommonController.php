@@ -46,8 +46,8 @@ class CommonController extends Core {
 					foreach ($ids as $id) {
 						$this->products->setState(intval($id), $newState);
 						$product = $this->products->getProduct(intval($id));
-						$date = strftime("%d %h", strtotime($product->date) + 86400 * $to_days);
-						send_sms($product->phone, "Ваше отправление с кодовым номером ".sprintf("TR-UZ-%03d", $product->id)." принято в головном офисе г. Стамбул. Тариф \"Экспресс\", ориентировочная дата прибытия ".$date.". К оплате $".$product->price.". Вы можете отследить посылку через Телеграм-бот @uzglobalbot. http://google.com/");
+						$date = date("d h", strtotime($product->date) + 86400 * $to_days);
+						send_sms($product->phone, "Груз ".sprintf("TR-UZ-%03d", $product->id)." принят к перевозке, Дата прибытия ".$date.". К оплате $".$product->price);
 					}
 					ajaxResponse(false, "State changed!");
 					break;
