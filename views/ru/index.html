@@ -103,7 +103,9 @@
 							</tr>
 							<tr>
 								<?php
-									$date = strftime("%d %h", strtotime($product->date));
+									global $core;
+									global $langCode;
+									$date = $core->locdate->getLocalizedShortDate($langCode, strtotime($product->date));
 								?>
 								<td colspan="5">
 									<div class="leftinfoblock">
