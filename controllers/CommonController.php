@@ -3,7 +3,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/models/Core.php');
 require_once($_SERVER['DOCUMENT_ROOT'].'/models/SMSApi.php');
 
 /**
- * РљРѕРЅС‚СЂРѕР»Р»РµСЂ РѕР±С‰РёС… РґРµР№СЃС‚РІРёР№
+ * Контроллер общих действий
  */
 class CommonController extends Core {
 
@@ -39,7 +39,7 @@ class CommonController extends Core {
 					foreach ($ids as $id) {
 						$state = $this->products->getState(intval($id));
 						if ($newState <= $state) {
-							ajaxResponse(true, "РќРµРІРµСЂРЅРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РіСЂСѓР·Р°! РќРѕРІРѕРµ СЃРѕСЃС‚РѕСЏРЅРёРµ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РїСЂРµРґС‹РґСѓС‰РµРіРѕ!");
+							ajaxResponse(true, "Неверное состояние груза! Новое состояние должно быть больше предыдущего!");
 						}
 					}
 					$to_days = $this->settings->getSetting('self_cost_to');
@@ -47,9 +47,9 @@ class CommonController extends Core {
 						$this->products->setState(intval($id), $newState);
 						$product = $this->products->getProduct(intval($id));
 						$date = date("d h", strtotime($product->date) + 86400 * $to_days);
-						send_sms($product->phone, "Р“СЂСѓР· ".sprintf("TR-UZ-%03d", $product->id)." РїСЂРёРЅСЏС‚ Рє РїРµСЂРµРІРѕР·РєРµ, Р”Р°С‚Р° РїСЂРёР±С‹С‚РёСЏ ".$date.". Рљ РѕРїР»Р°С‚Рµ $".$product->price);
+						send_sms($product->phone, "Груз ".sprintf("TR-UZ-%03d", $product->id)." принят к перевозке, Дата прибытия ".$date.". К оплате $".$product->price);
 					}
-					ajaxResponse(false, "РЎРѕСЃС‚РѕСЏРЅРёРµ РёР·РјРµРЅРµРЅРѕ!");
+					ajaxResponse(false, "Состояние изменено!");
 					break;
 				}
 				case 'month_stat': {
