@@ -16,10 +16,15 @@ class IndexController extends Core {
 					$newState = $this->request->post('state', 'integer');
 					if ($newState > $state) {
 						$this->products->setState($id, $newState);
+						echo 'q1';
 						$to_days = $this->settings->getSetting('self_cost_to');
+						echo 'q2';
 						$product = $this->products->getProduct($id);
+						echo 'q3';
 						$date = date("d h", strtotime($product->date) + 86400 * $to_days);
+						echo 'q4';
 						send_sms($product->phone, "Груз ".sprintf("TR-UZ-%03d", $product->id)." принят к перевозке, Дата прибытия ".$date.". К оплате $".$product->price);
+						echo 'q5';
 						ajaxResponse(false, 'State changed!');
 					} else {
 						ajaxResponse(true, 'Incorrect state! Next state must be greater!');
