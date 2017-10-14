@@ -17,6 +17,10 @@ class IndexController extends Core {
 					if ($newState > $state) {
 						$this->products->setState($id, $newState);
 						ajaxResponse(false, 'Состояние груза изменено!');
+						$to_days = $this->settings->getSetting('self_cost_to');
+						$product = $this->products->getProduct($id);
+						$date = date("d h", strtotime($product->date) + 86400 * $to_days);
+						send_sms($product->phone, "Груз ".sprintf("TR-UZ-%03d", $product->id)." принят к перевозке, Дата прибытия ".$date.". К оплате $".$product->price);
 					} else {
 						ajaxResponse(true, 'Неверное состояние! Новое состояние груза должно быть больше предыдущего!');
 					}
