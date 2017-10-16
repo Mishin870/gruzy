@@ -213,6 +213,7 @@ class CommonController extends Core {
 					break;
 				}
 				case 'product_info': {
+					$lang = $this->request->post('lang', 'string');
 					$id = $this->request->post('id', 'integer');
 					$from = $this->settings->getSetting('self_cost_from');
 					$to = $this->settings->getSetting('self_cost_to');
@@ -225,7 +226,8 @@ class CommonController extends Core {
 						$day = $date['mday'];
 						$payed = $product->payed;
 						$state = $product->state;
-						$date = date("d F, H:i, ", strtotime($product->date));
+						//$date = date("d F, H:i, ", strtotime($product->date));
+						$date = $this->locdate->getLocalizedDateTime($lang, strtotime($product->date));
 						$name = $product->name;
 						$price = $product->price;
 						$weight = $product->weight;

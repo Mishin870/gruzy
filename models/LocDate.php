@@ -11,6 +11,10 @@ class LocDate extends Core {
 			'ru' => array('Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'),
 			'tr' => array('ocak', 'şubat', 'mart', 'nisan', 'mayıs', 'haziran', 'temmuz', 'ağustos', 'eylül', 'ekim', 'kasım', 'aralık')
 		);
+		$this->fullMonths = array(
+			'ru' => array("Январь", "Февраль", "Март", "Апрель", "Май", "Июню", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"),
+			'tr' => array("Январь", "Февраль", "Март", "Апрель", "Май", "Июню", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь")
+		);
 	}
 	
 	/**
@@ -21,6 +25,18 @@ class LocDate extends Core {
 		$month = $date['mon'];
 		$day = $date['mday'];
 		return $day . ' ' . $this->months[$lang][intval($month) - 1];
+	}
+	
+	/**
+	 *  @brief получить дату в длинном формате + время
+	 */
+	public function getLocalizedDateTime($lang, $date_int) {
+		$date = getdate($date_int);
+		$month = $date['mon'];
+		$day = $date['mday'];
+		$minutes = $date['minutes'];
+		$seconds = $date['seconds'];
+		return $day . ' ' . $this->fullMonths[$lang][intval($month) - 1] . ', ' . $minutes . ':' . $seconds;
 	}
 
 }
