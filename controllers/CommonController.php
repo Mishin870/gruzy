@@ -228,6 +228,8 @@ class CommonController extends Core {
 						$date = date("d F, H:i, ", strtotime($product->date));
 						$name = $product->name;
 						$price = $product->price;
+						$weight = $product->weight;
+						$phone = $product->phone;
 						ajaxResponse(false, json_encode(array(
 							'from'=>$from,
 							'to'=>$to,
@@ -237,7 +239,9 @@ class CommonController extends Core {
 							'state'=>$state,
 							'date'=>$date,
 							'name'=>$name,
-							'price'=>$price
+							'price'=>$price,
+							'weight'=>$weight,
+							'phone'=>$phone
 						)));
 					}
 					break;
