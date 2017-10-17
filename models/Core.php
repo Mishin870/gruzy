@@ -15,7 +15,9 @@ class Core {
 		'db'		=> 'Database',
 		'cfg'		=> 'Cfg',
 		'settings'  => 'Settings',
-		'locdate'	=> 'LocDate'
+		'locdate'	=> 'LocDate',
+		'watchers'	=> 'Watchers',
+		'events'	=> 'Events'
 	);
 	
 	public function __construct() {}
