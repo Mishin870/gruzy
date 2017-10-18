@@ -98,6 +98,13 @@ class Products extends Core {
 	public function setState($id, $state) {
 		$query = $this->db->placehold("UPDATE products SET state=? WHERE id=? LIMIT 1", intval($state), intval($id));
 		$this->db->query($query);
+		
+		$watchers = $this->watchers->getWatchers(array('product_id'=>$id));
+		$event = new stdClass;
+		foreach ($watchers as $watcher) {
+			$event->watcher_id = $watcher->id;
+			$this->events->replaceEvent($event);
+		}
 	}
 
 	public function setActive($id, $active) {

@@ -16,6 +16,12 @@ class Events extends Core {
 		return $this->db->insert_id();
 	}
 	
+	public function replaceEvent($event) {
+		$event = (array) $event;
+		$query = $this->db->query("REPLACE INTO events SET ?%", $event);
+		return $this->db->insert_id();
+	}
+	
 	public function deleteAllEvents() {
 		$query = $this->db->placehold("DELETE FROM tableName; ALTER TABLE tableName AUTO_INCREMENT = 1");
 		$this->db->query($query);
