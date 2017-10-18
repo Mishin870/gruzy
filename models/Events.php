@@ -4,9 +4,10 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/models/Core.php');
 class Events extends Core {
 	
 	public function getEvents() {	
-		$query = $this->db->placehold("SELECT *
-										FROM events INNER JOIN watchers WHERE events.watcher_id = watchers.id");
+		$query = $this->db->placehold("SELECT 
+										FROM events LEFT JOIN watchers WHERE events.watcher_id = watchers.id");
 		$this->db->query($query);
+		
 		return $this->db->results();
 	}
 	
