@@ -301,11 +301,15 @@ class CommonController extends Core {
 					$i = 0;
 					foreach ($events as $event) {
 						$pid = intval($event->product_id);
+						echo $pid;
 						if (!isset($newStates[$pid])) {
 							$state = $this->products->getState($pid);
+							echo 'state: '.$state;
 							$newStates[$pid] = $state;
 						}
+						var_dump($newStates);
 						$prevState = intval($event->current_state);
+						echo 'prev: '.$prevState;
 						if ($newState != $prevState) {
 							$sendInfo = new stdClass;
 							$sendInfo->id = $i;
