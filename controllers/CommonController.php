@@ -299,6 +299,7 @@ class CommonController extends Core {
 					//$this->events->deleteAllEvents();
 					//$ret = array();
 					var_dump($events);
+					ajaxResponse(false, 'ok');
 					break;
 				}
 			}
