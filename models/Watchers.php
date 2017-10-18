@@ -34,7 +34,7 @@ class Watchers extends Core {
 	
 	public function addWatcher($watcher) {
 		$watcher = (array) $watcher;
-		$query = $this->db->query("INSERT INTO watchers SET ?%", $watcher);
+		$query = $this->db->query("REPLACE INTO watchers SET ?%", $watcher);
 		return $this->db->insert_id();
 	}
 	

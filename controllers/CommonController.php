@@ -319,6 +319,16 @@ class CommonController extends Core {
 					ajaxResponse(false, json_encode($toSend));
 					break;
 				}
+				case 'add_watcher': {
+					$chatid = $this->request->post('chatid', 'integer');
+					$product_id = $this->request->post('product_id', 'integer');
+					$watcher = new stdClass;
+					$watcher->chatid = $chatid;
+					$watcher->product_id = $product_id;
+					$watcher->current_state = $this->products->getState($product_id);
+					$this->watchers->addWatcher($watcher);
+					break;
+				}
 			}
 			ajaxResponse(true, "Incorrect function!");
 		}
