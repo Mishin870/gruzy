@@ -292,6 +292,14 @@ class CommonController extends Core {
 						$this->products->addProduct($product);
 						ajaxResponse(false, print_r($product, true));
 					}
+					break;
+				}
+				case 'get_events': {
+					$events = $this->events->getEvents();
+					//$this->events->deleteAllEvents();
+					//$ret = array();
+					var_dump($events);
+					break;
 				}
 			}
 			ajaxResponse(true, "Incorrect function!");
