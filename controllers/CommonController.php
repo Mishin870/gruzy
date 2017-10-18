@@ -294,31 +294,6 @@ class CommonController extends Core {
 					}
 					break;
 				}
-				case 'get_events': {
-					$events = $this->events->getEvents();
-					$newStates = array();
-					$toSend = array();
-					$i = 0;
-					foreach ($events as $event) {
-						$pid = intval($event->product_id);
-						if (!isset($newStates[$pid])) {
-							$state = $this->products->getState($pid);
-							$newStates[$pid] = $state;
-						}
-						$prevState = intval($event->current_state);
-						if ($newStates[$pid] != $prevState) {
-							$sendInfo = new stdClass;
-							$sendInfo->id = $i;
-							$i++;
-							$sendInfo->chatid = $event->chatid;
-							$sendInfo->product_id = $event->product_id;
-							$toSend[] = $sendInfo;
-						}
-					}
-					$this->events->deleteAllEvents();
-					ajaxResponse(false, json_encode($toSend));
-					break;
-				}
 			}
 			ajaxResponse(true, "Incorrect function!");
 		}
