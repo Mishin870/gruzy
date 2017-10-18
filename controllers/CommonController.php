@@ -313,13 +313,9 @@ class CommonController extends Core {
 							$sendInfo->chatid = $event->chatid;
 							$sendInfo->product_id = $event->product_id;
 							$toSend[] = $sendInfo;
-							var_dump($sendInfo);
-							var_dump($toSend);
 						}
 					}
-					//$this->events->deleteAllEvents();
-					//$ret = array();
-					//var_dump($events);
+					$this->events->deleteAllEvents();
 					ajaxResponse(false, json_encode($toSend));
 					break;
 				}
