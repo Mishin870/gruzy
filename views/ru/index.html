@@ -167,6 +167,9 @@
 				<div id="chartLabelNPayed" class="charts-summ"></div>
 				<canvas id="myChart2" width="80%" height="36Px"></canvas>
 <script>
+function pval(val) {
+	return parseInt(val) ? parseInt(val) : 0;
+}
 ajaxToCore('common', 'full_stat', {}, function(data) {
 	var json = JSON.parse(data);
 	if (json.err == '1') return;
@@ -184,8 +187,9 @@ ajaxToCore('common', 'full_stat', {}, function(data) {
 		var n = parseInt(day);
 		payed[n] = parseInt(sub.payed[day]);
 	}
-	$("#chartLabelPayed").html("$" + (parseInt(sub.allp) + 0) + "  /  " + (parseInt(sub.wp) + 0) + " кг");
-	$("#chartLabelNPayed").html("$" + (parseInt(sub.allnp) + 0) + "  /  " + (parseInt(sub.wnp) + 0) + " кг");
+	
+	$("#chartLabelPayed").html("$" + pval(sub.allp) + "  /  " + pval(sub.wp) + " кг");
+	$("#chartLabelNPayed").html("$" + pval(sub.allnp) + "  /  " + pval(sub.wnp) + " кг");
 	
 	Chart.defaults.global.legend.display = false;
 	var ctx = document.getElementById("myChart").getContext('2d');
