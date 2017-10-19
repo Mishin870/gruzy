@@ -184,8 +184,8 @@ ajaxToCore('common', 'full_stat', {}, function(data) {
 		var n = parseInt(day);
 		payed[n] = parseInt(sub.payed[day]);
 	}
-	$("#chartLabelPayed").html("$" + sub.allp + "  /  " + sub.wp + " кг");
-	$("#chartLabelNPayed").html("$" + sub.allnp + "  /  " + sub.wnp + " кг");
+	$("#chartLabelPayed").html("$" + (sub.allp + 0) + "  /  " + (sub.wp + 0) + " кг");
+	$("#chartLabelNPayed").html("$" + (sub.allnp + 0) + "  /  " + (sub.wnp + 0) + " кг");
 	
 	Chart.defaults.global.legend.display = false;
 	var ctx = document.getElementById("myChart").getContext('2d');
