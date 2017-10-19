@@ -110,11 +110,13 @@ class Products extends Core {
 			$query = $this->db->placehold("SELECT DISTINCT DAY(p.date) as day, price, payed, weight FROM products p WHERE
 										MONTH(p.date) = MONTH(CURRENT_DATE() - INTERVAL 1 MONTH)
 										AND YEAR(p.date) = YEAR(CURRENT_DATE() - INTERVAL 1 MONTH)
+										AND p.active = 1
 									");
 		} else {
 			$query = $this->db->placehold("SELECT DISTINCT DAY(p.date) as day, price, payed, weight FROM products p WHERE
 										MONTH(p.date) = MONTH(CURRENT_DATE())
 										AND YEAR(p.date) = YEAR(CURRENT_DATE())
+										AND p.active = 1
 									");
 		}
 		$this->db->query($query);
@@ -126,11 +128,13 @@ class Products extends Core {
 			$query = $this->db->placehold("SELECT DISTINCT WEEKDAY(p.date) as day, price, payed, weight FROM products p WHERE
 										YEARWEEK(p.date, 1) = YEARWEEK(CURDATE() - INTERVAL 7 DAY, 1)
 										AND YEAR(p.date) = YEAR(CURRENT_DATE() - INTERVAL 7 DAY)
+										AND p.active = 1
 									");
 		} else {
 			$query = $this->db->placehold("SELECT DISTINCT WEEKDAY(p.date) as day, price, payed, weight FROM products p WHERE
 										YEARWEEK(p.date, 1) = YEARWEEK(CURDATE(), 1)
 										AND YEAR(p.date) = YEAR(CURRENT_DATE())
+										AND p.active = 1
 									");
 		}
 		$this->db->query($query);
@@ -143,12 +147,14 @@ class Products extends Core {
 										MONTH(p.date) = MONTH(CURDATE() - INTERVAL 1 DAY)
 										AND DAY(p.date) = DAY(CURDATE() - INTERVAL 1 DAY)
 										AND YEAR(p.date) = YEAR(CURRENT_DATE() - INTERVAL 1 DAY)
+										AND p.active = 1
 									");
 		} else {
 			$query = $this->db->placehold("SELECT DISTINCT HOUR(p.date) as hour, price, payed, weight FROM products p WHERE
 										MONTH(p.date) = MONTH(CURDATE())
 										AND DAY(p.date) = DAY(CURDATE())
 										AND YEAR(p.date) = YEAR(CURRENT_DATE())
+										AND p.active = 1
 									");
 		}
 		$this->db->query($query);
