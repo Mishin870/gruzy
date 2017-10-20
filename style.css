@@ -305,7 +305,7 @@ body {
 	border: 1px solid #C1C7CD;
     border-radius: 3px;
     position: absolute;
-    top: 7px;
+    top: 12px;
     left:-25px;
 }
 .checkboxtable + label:hover:after{
@@ -333,7 +333,7 @@ body {
 }
 .content table tr td{
 	width:20%;
-	padding: 15px 0;
+	padding: 15px 4px;
 	text-align: center;
 	position: relative;
 	font-size: 14px;
