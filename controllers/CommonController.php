@@ -214,7 +214,7 @@ class CommonController extends Core {
 				}
 				case 'product_info': {
 					$lang = $this->request->post('lang', 'string');
-					$id = $this->request->post('id', 'integer');
+					$track = $this->request->post('track_id', 'string');
 					$from = $this->settings->getSetting('self_cost_from');
 					$to = $this->settings->getSetting('self_cost_to');
 					$product = $this->products->getProduct($id);
@@ -289,7 +289,11 @@ class CommonController extends Core {
 						$date = date('Y-m-d H:i:s');
 						$product->date = $date;
 						$product->date_get = $date;
-						$this->products->addProduct($product);
+						$product_id = $this->products->addProduct($product);
+
+						$product->track_id = sprintf("TR-UZ-%04d", $product_id);
+						$this->products->updateProduct($product_id, $product);
+
 						ajaxResponse(false, print_r($product, true));
 					}
 					break;

@@ -61,7 +61,7 @@ class IndexController extends Core {
 
 						$product->track_id = sprintf("TR-UZ-%04d", $product_id);
 						$this->products->updateProduct($product_id, $product);
-						
+
 						ajaxResponse(false, print_r($product, true));
 					}
 					break;
