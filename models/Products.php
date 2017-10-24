@@ -7,7 +7,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/models/Core.php');
  */
 class Products extends Core {
 
-	public function getProducts($filter = array()) {	
+	public function getProducts($filter = array()) {
 		$idFilter = '';
 		$admin_idFilter = '';
 		$stateFilter = '';
@@ -26,8 +26,18 @@ class Products extends Core {
 									FROM products p WHERE 1
 									$payedFilter $idFilter $admin_idFilter $stateFilter $paymentFilter $activeFilter ORDER BY p.id");
 		$this->db->query($query);
-		
+
 		return $this->db->results();
+	}
+
+	public function getProductsByTrack($track) {
+		$trackFilter = $this->db->placehold("AND p.track_id='$track'");
+		$query = $this->db->placehold("SELECT DISTINCT *
+									FROM products p WHERE 1
+									$trackFilter LIMIT 1");
+		$this->db->query($query);
+
+		return $this->db->result();
 	}
 
 	public function getContacts() {

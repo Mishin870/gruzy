@@ -294,6 +294,17 @@ class CommonController extends Core {
 					}
 					break;
 				}
+				case 'get_id_by_track': {
+					$track = $this->request->post('track', 'string');
+
+					if (empty($track)) {
+						ajaxResponse(true, "Error! Track is empty!");
+					} else {
+						$product = $this->products->getProductByTrack($track);
+						ajaxResponse(false, $product->id);
+					}
+					break;
+				}
 			}
 			ajaxResponse(true, "Incorrect function!");
 		}

@@ -34,11 +34,13 @@ class IndexController extends Core {
 					$payed = $this->request->post('payed', 'integer');
 					$note = $this->request->post('note', 'string');
 					$weight = floatval($this->request->post('weight'));
+					$track = $this->request->post('track', 'string');
 					if (empty($name) || empty($phone) || empty($address) || empty($weight)) {
 						ajaxResponse(true, "Error! Please, fill all fileds!");
 					} else {
 						$pricePerWeight = $this->settings->getSetting('send_cost');
 						$product = new stdClass;
+						$product->track_id = $track;
 						$product->name = $name;
 						$product->phone = $phone;
 						$product->address = $address;
