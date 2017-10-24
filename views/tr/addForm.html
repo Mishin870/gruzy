@@ -8,6 +8,7 @@
 <aside id="add_product" class="right-sidebar">
 	<div class="backcargo">← Geri dön</div>
 	<div class="cargoinput"><input type="text" name="name" class="addcargo" placeholder="Adı ve soyadı"></div>
+	<div class="cargoinput"><input type="text" name="track_id" class="addcargo" placeholder="Трек-код"></div>
 	<div class="cargoinput"><input type="text" name="phone" class="addcargo" placeholder="Telefon numarası"></div>
 	<div class="cargoinput"><input type="text" name="weight" class="addcargo" placeholder="Ağırlığı (kg)"></div>
 	<div class="cargoinput"><input type="text" name="address" class="addcargo" placeholder="Teslimat adresi"></div>
@@ -33,6 +34,7 @@
 	});
 	function addProduct() {
 		var name = $('#add_product input[name="name"]').val();
+		var track = $('#add_product input[name="track_id"]').val();
 		var phone = $('#add_product input[name="phone"]').val();
 		var weight = $('#add_product input[name="weight"]').val();
 		var address = $('#add_product input[name="address"]').val();
@@ -45,7 +47,8 @@
 				'weight': weight,
 				'address': address,
 				'payed': payed,
-				'note': note
+				'note': note,
+				'track_id': track
 			};
 			ajaxToCore('index', 'add_product', data, function (data) {
 				var json = JSON.parse(data);
