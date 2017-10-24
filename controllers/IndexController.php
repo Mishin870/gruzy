@@ -40,6 +40,9 @@ class IndexController extends Core {
 					} else {
 						$pricePerWeight = $this->settings->getSetting('send_cost');
 						$product = new stdClass;
+						if (empty($track)) {
+							$track = '';
+						}
 						$product->track_id = $track;
 						$product->name = $name;
 						$product->phone = $phone;
@@ -54,7 +57,11 @@ class IndexController extends Core {
 						$date = date('Y-m-d H:i:s');
 						$product->date = $date;
 						$product->date_get = $date;
-						$this->products->addProduct($product);
+						$product_id = $this->products->addProduct($product);
+
+						$product->track_id = sprintf("TR-UZ-%04d", $product_id);
+						$this->products->updateProduct($product_id, $product);
+						
 						ajaxResponse(false, print_r($product, true));
 					}
 					break;
