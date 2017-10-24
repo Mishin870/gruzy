@@ -23,7 +23,7 @@
 	$date = $core->locdate->getLocalizedShortDate($langCode, strtotime($product->date) + 86400 * $to_days);
 ?>
 <div class="label">
-	<div class="track-number"><?php echo sprintf("TR-UZ-%03d", $product->id); ?></div>
+	<div class="track-number"><?php echo $product->track_id; ?></div>
 	<div class="logo-print"><img src="../images/onlylogo.png"></div>
 	<div class="gruz textglob">Груз</div>
 	<div class="tarif textglob">Тариф</div>
