@@ -55,12 +55,11 @@
 				    </tr>
 					<?php
 						$products = $core->products->getContacts();
-						var_dump($products);
 						foreach ($products as $product) {
 					?>
 						<tr>
 							<td><input id="checkBox" type="checkbox" class="checkboxtable"><label></label><div class="checkghost"></div><?php echo $product->name;?></td>
-							<td><?php echo sprintf("TR-UZ-%03d", $product->id); ?></td>
+							<td><?php echo $product->track_id; ?></td>
 							<td><?php echo $product->phone;?></td>
 						</tr>
 					<?php
