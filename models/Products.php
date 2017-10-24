@@ -41,7 +41,7 @@ class Products extends Core {
 	}
 
 	public function getContacts() {
-		$query = $this->db->placehold("SELECT name, MAX(id), MAX(track_id), MAX(phone) FROM products p GROUP BY p.name");
+		$query = $this->db->placehold("SELECT name, MAX(track_id) as track_id, MAX(phone) as phone FROM products p GROUP BY p.name");
 		$this->db->query($query);
 		return $this->db->results();
 	}
