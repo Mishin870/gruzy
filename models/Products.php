@@ -41,8 +41,7 @@ class Products extends Core {
 	}
 
 	public function getContacts() {
-		$query = $this->db->placehold("SELECT DISTINCT * FROM products p GROUP BY p.name ORDER BY p.id");
-		return $this->db->getError();
+		$query = $this->db->placehold("SELECT DISTINCT * FROM products p ORDER BY p.id");
 		$this->db->query($query);
 		return $this->db->results();
 	}
