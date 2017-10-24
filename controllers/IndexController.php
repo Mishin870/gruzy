@@ -33,7 +33,7 @@ class IndexController extends Core {
 					$address = $this->request->post('address', 'string');
 					$payed = $this->request->post('payed', 'integer');
 					$note = $this->request->post('note', 'string');
-					$weight = floatval($this->request->post('weight'));
+					$weight = floatval(str_replace(',', '.', $this->request->post('weight', 'string')));
 					$track = $this->request->post('track_id', 'string');
 					if (empty($name) || empty($phone) || empty($address) || empty($weight)) {
 						ajaxResponse(true, "Error! Please, fill all fileds!");
