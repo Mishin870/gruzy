@@ -41,7 +41,7 @@ class Products extends Core {
 	}
 
 	public function getContacts() {
-		$query = $this->db->placehold("SELECT * FROM products p GROUP BY p.name");
+		$query = $this->db->placehold("SELECT * FROM products GROUP BY name");
 		$this->db->query($query);
 		return $this->db->results();
 	}
