@@ -34,16 +34,12 @@ class IndexController extends Core {
 					$payed = $this->request->post('payed', 'integer');
 					$note = $this->request->post('note', 'string');
 					$weight = floatval($this->request->post('weight'));
-					$track = $this->request->post('track', 'string');
+					$track = $this->request->post('track_id', 'string');
 					if (empty($name) || empty($phone) || empty($address) || empty($weight)) {
 						ajaxResponse(true, "Error! Please, fill all fileds!");
 					} else {
 						$pricePerWeight = $this->settings->getSetting('send_cost');
 						$product = new stdClass;
-						if (empty($track)) {
-							$track = '';
-						}
-						$product->track_id = $track;
 						$product->name = $name;
 						$product->phone = $phone;
 						$product->address = $address;
@@ -57,10 +53,16 @@ class IndexController extends Core {
 						$date = date('Y-m-d H:i:s');
 						$product->date = $date;
 						$product->date_get = $date;
-						$product_id = $this->products->addProduct($product);
+						if (empty($track)) {
+							$product->track_id = '';
+							$product_id = $this->products->addProduct($product);
 
-						$product->track_id = sprintf("TR-UZ-%04d", $product_id);
-						$this->products->updateProduct($product_id, $product);
+							$product->track_id = sprintf("TR-UZ-%04d", $product_id);
+							$this->products->updateProduct($product_id, $product);
+						} else {
+							$product->track_id = 'TR-UZ-' . $track;
+							$this->products->addProduct($product);
+						}
 
 						ajaxResponse(false, print_r($product, true));
 					}
