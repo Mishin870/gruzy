@@ -219,6 +219,7 @@ class CommonController extends Core {
 					$from = $this->settings->getSetting('self_cost_from');
 					$to = $this->settings->getSetting('self_cost_to');
 					$product = $this->products->getProduct($track);
+					var_dump($product);
 					if (empty($product)) {
 						ajaxResponse(true, "Product not found!");
 					} else {
