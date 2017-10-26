@@ -215,12 +215,11 @@ class CommonController extends Core {
 				case 'product_info': {
 					$lang = $this->request->post('lang', 'string');
 					$track = $this->request->post('track_id', 'string');
-					echo 'track = '.$track;
 					if (is_numeric($track)) $track = sprintf("TR-UZ-%04d", $track);
-					echo 'track = '.$track;
 					$from = $this->settings->getSetting('self_cost_from');
 					$to = $this->settings->getSetting('self_cost_to');
 					$product = $this->products->getProduct($id);
+					var_dump($product);
 					if (empty($product)) {
 						ajaxResponse(true, "Product not found!");
 					} else {
