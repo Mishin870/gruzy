@@ -31,7 +31,7 @@ class Products extends Core {
 	}
 
 	public function getProductsByTrack($track) {
-		$trackFilter = $this->db->placehold("AND p.track_id=".$track);
+		$trackFilter = $this->db->placehold("AND p.track_id='".$track."'");
 		$query = $this->db->placehold("SELECT DISTINCT *
 									FROM products p WHERE 1
 									$trackFilter LIMIT 1");
