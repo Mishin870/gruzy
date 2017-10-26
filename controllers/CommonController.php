@@ -218,8 +218,7 @@ class CommonController extends Core {
 					if (is_numeric($track)) $track = sprintf("TR-UZ-%04d", $track);
 					$from = $this->settings->getSetting('self_cost_from');
 					$to = $this->settings->getSetting('self_cost_to');
-					$product = $this->products->getProduct($id);
-					var_dump($product);
+					$product = $this->products->getProduct($track);
 					if (empty($product)) {
 						ajaxResponse(true, "Product not found!");
 					} else {
